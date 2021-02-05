@@ -33,10 +33,17 @@
                         </div>
                         <div class="form-group">
                             <label for="content" class="text-muted">Describe your experience with</label>
-                            <textarea name="content" cols="30" rows="10" class="form-control"
-                                      v-model="review.content"></textarea>
+                            <textarea
+                                name="content"
+                                cols="30"
+                                rows="10"
+                                class="form-control"
+                                v-model="review.content"
+                                :class="[{'is-invalid': errorFor('content')}]"
+                            ></textarea>
+                            <v-errors :errors="errorFor('content')"></v-errors>
                         </div>
-                        <button class="btn btn-lg btn-primary  btn-block" @click.prevent="submit" :disabled="loading">Submit</button>
+                        <button class="btn btn-lg btn-primary  btn-block" @click.prevent="submit" :disabled="sending">Submit</button>
                     </div>
                 </div>
             </div>
@@ -59,7 +66,8 @@ export default {
             loading: false,
             booking: null,
             error: false,
-            errors: null
+            errors: null,
+            sending: false
 
         };
     },
@@ -84,12 +92,9 @@ export default {
 
             this.error = true;
 
-        }).then(() => {
-            this.loading = false;
-        });
+        }).then(() => (this.loading = false));
 
         // 3. Store the review
-
     },
 
     computed: {
@@ -114,7 +119,7 @@ export default {
     methods: {
         submit() {
             this.errors = null;
-            this.loading = true;
+            this.sending = true;
 
             axios.post(`/api/reviews`, this.review).
             then(response => console.log(response)).
@@ -128,12 +133,17 @@ export default {
                 }
                 this.error = true;
             }).
-            then(() => (this.loading = false));
+            then(() => (this.sendings = false));
+        },
+        errorFor(field) {
+            return null != this.errors && this.errors[field] ? this.errors[field] : null;
         }
     }
 }
 </script>
 
 <style scoped>
-
+    .form-control .is-invalid ~ div > .invalid-feedback {
+        display: block;
+    }
 </style>
