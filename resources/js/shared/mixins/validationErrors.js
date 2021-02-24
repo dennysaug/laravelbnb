@@ -6,7 +6,7 @@ export default {
     },
     methods: {
         errorFor(field) {
-            return null != this.hasErrors && this.errors[field]
+            return null != this.errors && this.errors[field]
                 ? this.errors[field]
                 : null;
         }

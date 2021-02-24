@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '9dbdfae98f208c4b986b817a54aff937168e65c0',
+    'reference' => '59ed49cbccff7c01290bf4f2eb5346b06a998f3f',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -384,7 +384,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '9dbdfae98f208c4b986b817a54aff937168e65c0',
+      'reference' => '59ed49cbccff7c01290bf4f2eb5346b06a998f3f',
     ),
     'laravel/tinker' => 
     array (
@@ -442,12 +442,12 @@
     ),
     'mockery/mockery' => 
     array (
-      'pretty_version' => '1.4.2',
-      'version' => '1.4.2.0',
+      'pretty_version' => '1.4.3',
+      'version' => '1.4.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '20cab678faed06fac225193be281ea0fddb43b93',
+      'reference' => 'd1339f64479af1bee0e82a0413813fe5345a54ea',
     ),
     'monolog/monolog' => 
     array (
@@ -527,12 +527,12 @@
     ),
     'phar-io/version' => 
     array (
-      'pretty_version' => '3.0.4',
-      'version' => '3.0.4.0',
+      'pretty_version' => '3.1.0',
+      'version' => '3.1.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e4782611070e50613683d2b9a57730e9a3ba5451',
+      'reference' => 'bae7c545bef187884426f042434e561ab1ddb182',
     ),
     'php-parallel-lint/php-console-color' => 
     array (

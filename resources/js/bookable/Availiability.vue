@@ -3,9 +3,6 @@
         <h6 class="text-uppercase text-secondary font-weight-bolder">Check Availiability</h6>
         <span v-if="noAvailability" class="text-danger">(NOT AVAILABLE)</span>
         <span v-if="hasAvailability" class="text-success">(AVAILABLE)</span>
-        <div>Debug: {{ noAvailability }}</div>
-        <div>Debug: {{ hasAvailability }}</div>
-        <div>Code: {{ status }}</div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="from">From</label>
@@ -48,14 +45,14 @@ import validationErrors from "../shared/mixins/validationErrors";
 export default {
     mixins: [validationErrors],
     props: {
-        bookableId: String
+        bookableId: [String, Number]
     },
 
     data() {
         return {
             status: null,
-            from: null,
-            to: null,
+            from: this.$store.state.lastSearch.from || null,
+            to: this.$store.state.lastSearch.to || null,
             loading: false
         };
 
@@ -65,6 +62,12 @@ export default {
         check() {
             this.loading = true;
             this.errors = null;
+
+            this.$store.commit('setLastSearch', {
+              from: this.from,
+              to: this.to
+            });
+
 
             axios.get(`/api/bookables/${this.bookableId}/availability?from=${this.from}&to=${this.to}`)
             .then(response => {
