@@ -2055,6 +2055,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61487,119 +61494,136 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "h6",
-      { staticClass: "text-uppercase text-secondary font-weight-bolder" },
-      [_vm._v("Check Availiability")]
-    ),
-    _vm._v(" "),
-    _vm.noAvailability
-      ? _c("span", { staticClass: "text-danger" }, [_vm._v("(NOT AVAILABLE)")])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.hasAvailability
-      ? _c("span", { staticClass: "text-success" }, [_vm._v("(AVAILABLE)")])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-row" }, [
+  return _c(
+    "div",
+    [
       _c(
-        "div",
-        { staticClass: "form-group col-md-6" },
-        [
-          _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.from,
-                expression: "from"
-              }
-            ],
-            staticClass: "form-control form-control-sm",
-            class: [{ "is-invalid": _vm.errorFor("from") }],
-            attrs: { type: "text", name: "from", placeholder: "Start date" },
-            domProps: { value: _vm.from },
-            on: {
-              keyup: function($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
-                }
-                return _vm.check($event)
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.from = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("v-errors", { attrs: { errors: _vm.errorFor("from") } })
-        ],
-        1
+        "h6",
+        { staticClass: "text-uppercase text-secondary font-weight-bolder" },
+        [_vm._v("Check Availiability")]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-group col-md-6" },
-        [
-          _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.to,
-                expression: "to"
-              }
-            ],
-            staticClass: "form-control form-control-sm",
-            class: [{ "is-invalid": _vm.errorFor("to") }],
-            attrs: { type: "text", name: "to", placeholder: "End date" },
-            domProps: { value: _vm.to },
-            on: {
-              keyup: function($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
-                }
-                return _vm.check($event)
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.to = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("v-errors", { attrs: { errors: _vm.errorFor("to") } })
-        ],
-        1
-      ),
+      _c("transition", [
+        _vm.noAvailability
+          ? _c("span", { staticClass: "text-danger" }, [
+              _vm._v("(NOT AVAILABLE)")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.hasAvailability
+          ? _c("span", { staticClass: "text-success" }, [_vm._v("(AVAILABLE)")])
+          : _vm._e()
+      ]),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary btn-block",
-          attrs: { disabled: _vm.loading },
-          on: { click: _vm.check }
-        },
-        [_vm._v("Check")]
-      )
-    ])
-  ])
+      _c("div", { staticClass: "form-row" }, [
+        _c(
+          "div",
+          { staticClass: "form-group col-md-6" },
+          [
+            _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.from,
+                  expression: "from"
+                }
+              ],
+              staticClass: "form-control form-control-sm",
+              class: [{ "is-invalid": _vm.errorFor("from") }],
+              attrs: { type: "text", name: "from", placeholder: "Start date" },
+              domProps: { value: _vm.from },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.check($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.from = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("v-errors", { attrs: { errors: _vm.errorFor("from") } })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group col-md-6" },
+          [
+            _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.to,
+                  expression: "to"
+                }
+              ],
+              staticClass: "form-control form-control-sm",
+              class: [{ "is-invalid": _vm.errorFor("to") }],
+              attrs: { type: "text", name: "to", placeholder: "End date" },
+              domProps: { value: _vm.to },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.check($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.to = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("v-errors", { attrs: { errors: _vm.errorFor("to") } })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary btn-block",
+            attrs: { disabled: _vm.loading },
+            on: { click: _vm.check }
+          },
+          [
+            !_vm.loading ? _c("span", [_vm._v("Check!")]) : _vm._e(),
+            _vm._v(" "),
+            _vm.loading
+              ? _c("span", [
+                  _c("i", { staticClass: "fas fa-circle-notch fa-spin" }),
+                  _vm._v(" Checking...\n            ")
+                ])
+              : _vm._e()
+          ]
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

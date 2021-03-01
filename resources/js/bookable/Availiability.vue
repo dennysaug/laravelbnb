@@ -1,8 +1,10 @@
 <template>
     <div>
         <h6 class="text-uppercase text-secondary font-weight-bolder">Check Availiability</h6>
-        <span v-if="noAvailability" class="text-danger">(NOT AVAILABLE)</span>
-        <span v-if="hasAvailability" class="text-success">(AVAILABLE)</span>
+        <transition>
+            <span v-if="noAvailability" class="text-danger">(NOT AVAILABLE)</span>
+            <span v-if="hasAvailability" class="text-success">(AVAILABLE)</span>
+        </transition>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="from">From</label>
@@ -32,7 +34,12 @@
                 <v-errors :errors="errorFor('to')"></v-errors>
             </div>
 
-            <button class="btn btn-secondary btn-block" @click="check" :disabled="loading">Check</button>
+            <button class="btn btn-secondary btn-block" @click="check" :disabled="loading">
+                <span v-if="!loading">Check!</span>
+                <span v-if="loading">
+                    <i class="fas fa-circle-notch fa-spin"></i> Checking...
+                </span>
+            </button>
 
         </div>
     </div>

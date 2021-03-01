@@ -8,6 +8,7 @@ if [ ! -d $(pwd)/node_modules ]; then
     npm install vue-route && \
 #    su node && \
     npm audit fix --force && \
+    npm install vuex --save && \
     npm rebuild
 fi
 
