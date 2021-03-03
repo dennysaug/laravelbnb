@@ -15,6 +15,7 @@ import StarRating from "./shared/components/StarRating";
 import ValidationErrors from "./shared/components/ValidationErrors";
 import FatalError from "./shared/components/FatalError";
 import Success from "./shared/components/Success";
+import SubmitButton from "./shared/components/SubmitButton";
 import storeDefinition from "./store";
 
 window.Vue = require('vue');
@@ -28,6 +29,7 @@ Vue.component("star-rating", StarRating);
 Vue.component("fatal-error", FatalError);
 Vue.component("success", Success);
 Vue.component("v-errors", ValidationErrors);
+Vue.component("submit-button", SubmitButton);
 
 const store = new Vuex.Store(storeDefinition);
 
