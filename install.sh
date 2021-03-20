@@ -31,7 +31,8 @@ docker-php-entrypoint php-fpm && su "$USER"
 #docker exec -it php1 /bin/bash
 #su dennys
 
-
+#docker stop $(docker ps -a -q)
+#docker rm $(docker ps -a -q)
 
 
 
