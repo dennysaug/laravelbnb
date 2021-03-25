@@ -1,0 +1,24 @@
+{
+    "bookings": [
+        {
+            "bookable_id": 1,
+            "from": "2021-05-10",
+            "to": "2021-05-12"
+        },
+        {
+            "bookable_id": 2,
+            "from": "2021-06-10",
+            "to": "2021-06-12"
+        }
+    ],
+    "customer": {
+        "first_names": "Dennys",
+        "last_name": "Oliveira",
+        "email": "dennysaug@gmail.com",
+        "street": "Hopins St 25",
+        "city": "Hurray",
+        "country": "US",
+        "state": "NY",
+        "zip": "12345"
+    }
+}

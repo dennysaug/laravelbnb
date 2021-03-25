@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Address;
 use App\Bookable;
+use App\Booking;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -17,8 +19,8 @@ class CheckoutController extends Controller
     public function __invoke(Request $request)
     {
         $data = $request->validate([
-            'bookings' => 'requirted|array|min:1',
-            'bookings.*.bookable_id' => 'required|exists:bookable,id',
+            'bookings' => 'required|array|min:1',
+            'bookings.*.bookable_id' => 'required|exists:bookables,id',
             'bookings.*.from' => 'required|date|after_or_equal:today',
             'bookings.*.to' => 'required|date|after_or_equal:bookings.*.from',
             'customer.first_names' => 'required|min:2',
@@ -31,14 +33,35 @@ class CheckoutController extends Controller
             'customer.zip' => 'required|min:2',
         ]);
 
-        $data = $request->validate([
-            'bookings.*' => ['required', function ($attribute, $value, $failt) {
-                $bookable = Bookable::findOrFail($value['bookable']);
-                if (!$bookable->availableFor($value['from'] . $value['to'])) {
-                    $failt("The object is not available in given dates");
+        $data = array_merge($data, $request->validate([
+            'bookings.*' => ['required', function ($attribute, $value, $fail) {
+                $bookable = Bookable::findOrFail($value['bookable_id']);
+
+                if (!$bookable->availableFor($value['from'], $value['to'])) {
+                    $fail("The object is not available in given dates");
                 }
             }],
-        ]);
+        ]));
+
+        $bookingsData = $data['bookings'];
+        $addressData = $data['customer'];
+
+
+        $bookings = collect($bookingsData)->map(function($bookingData) use ($addressData) {
+            $bookable = Bookable::findOrFail($bookingData['bookable_id']);
+            $booking = new Booking();
+            $booking->from = $bookingData['from'];
+            $booking->to = $bookingData['to'];
+            $booking->price = $bookable->priceFor($booking->from, $booking->to)['total'];
+            $booking->bookable()->associate($bookable);
+            $booking->address()->associate(Address::make($addressData));
+
+            $booking->save();
+
+            return $booking;
+        });
+
+        return $bookings;
 
 
 
