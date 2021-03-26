@@ -5,6 +5,7 @@
 /storage/database
 /vendor
 /.idea
+.idea/
 .env
 *.lock
 .env.backup
