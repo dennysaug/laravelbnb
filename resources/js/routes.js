@@ -5,6 +5,7 @@ import Bookables from "./bookables/Bookables";
 import Review from "./review/Review";
 
 
+
 const routes = [
     {
         path: "/",
@@ -25,6 +26,16 @@ const routes = [
         path: "/basket",
         component: Basket,
         name: "basket"
+    },
+    {
+        path: "/auth/login",
+        component: require("./auth/Login").default,
+        name: "login"
+    },
+    {
+        path: "auth/register",
+        component: require("./auth/Register").default,
+        name: "register"
     }
 ];
 

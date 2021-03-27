@@ -2,10 +2,24 @@
     <div>
         <nav class="navbar bg-white border-bottom navbar-light">
             <router-link class="navbar-brand mr-auto" :to="{name: 'home'}">LaravelBnb</router-link>
-            <router-link class="btn nav-button" :to="{name: 'basket'}">
-                Basket
-                <span v-if="itemsInBasket" class="badge badge-secondary">{{ itemsInBasket }}</span>
-            </router-link>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <router-link class=" nav-link" :to="{name: 'basket'}">
+                        Basket
+                        <span v-if="itemsInBasket" class="badge badge-secondary">{{ itemsInBasket }}</span>
+                    </router-link>
+                </li>
+                <li class="nav-item" v-if="!isLoggedIn">
+                    <router-link :to="{name: 'register'}" class="nav-link">Register</router-link>
+                </li>
+                <li class="nav-item" v-if="!isLoggedIn">
+                    <router-link :to="{name: 'login'}" class="nav-link">Sign-in</router-link>
+                </li>
+                <li class="nav-item" v-if="isLoggedIn">
+                    <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
+                </li>
+
+            </ul>
         </nav>
 
         <div class="container mt-4 mb-4 pr-4 pl-4">
@@ -25,11 +39,23 @@ export default {
     },
     computed: {
         ...mapState({
-            lastSearchComputed: "lastSearch"
+            lastSearchComputed: "lastSearch",
+            isLoggedIn: "isLoggedIn"
         }),
         ...mapGetters({
             itemsInBasket: "itemsInBasket"
         })
+    },
+    methods: {
+        async logout() {
+            try {
+                axios.post("/logout");
+                this.$store.dispatch("logout");
+            } catch (error) {
+                this.$store.dispatch("logout");
+            }
+        }
     }
+
 }
 </script>

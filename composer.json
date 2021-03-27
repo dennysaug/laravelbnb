@@ -12,7 +12,7 @@
         "barryvdh/laravel-debugbar": "^3.5",
         "fideloper/proxy": "^4.0",
         "laravel/airlock": "^2.9",
-        "laravel/framework": "^6.2",
+        "laravel/framework": "^6.9",
         "laravel/sanctum": "^2.9",
         "laravel/tinker": "^1.0"
     },
